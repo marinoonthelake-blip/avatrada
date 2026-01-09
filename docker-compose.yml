@@ -1,0 +1,96 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: avatrada_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    container_name: avatrada_redis
+    restart: always
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
+    ports:
+      - "${REDIS_PORT}:6379"
+    volumes:
+      - redis_data:/data
+
+  ib-gateway:
+    image: ghcr.io/gnzsnz/ib-gateway:latest
+    container_name: avatrada_ib_gateway
+    restart: always
+    environment:
+      TWS_USERID: ${TWS_USERID}
+      TWS_PASSWORD: ${TWS_PASSWORD}
+      TRADING_MODE: ${APP_ENV}
+      READ_ONLY_API: "no"
+      VNC_SERVER_PASSWORD: ${VNC_PASSWORD}
+    ports:
+      - "4004:4004"
+      - "5900:5900"
+
+  theta-terminal:
+    build:
+      context: .
+      dockerfile: Dockerfile.theta
+    container_name: avatrada_theta_terminal
+    restart: always
+    environment:
+      THETA_USERNAME: ${THETA_USERNAME}
+      THETA_PASSWORD: ${THETA_PASSWORD}
+    ports:
+      - "25503:25503"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -s http://localhost:25503 > /dev/null || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  app:
+    build: .
+    container_name: avatrada_app
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_started
+      redis:
+        condition: service_started
+      ib-gateway:
+        condition: service_started
+      theta-terminal:
+        condition: service_healthy
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./src:/app/src
+      - ./celery_worker:/app/celery_worker
+
+  celery-worker:
+    build: .
+    container_name: avatrada_worker
+    restart: always
+    depends_on:
+      - redis
+      - postgres
+    command: celery -A src.core.celery_app worker --loglevel=info
+    env_file:
+      - .env
+    volumes:
+      - ./src:/app/src
+      - ./celery_worker:/app/celery_worker
+
+volumes:
+  postgres_data:
+  redis_data:
