@@ -1,0 +1,110 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e4]:
+  - generic [ref=e6]:
+    - generic [ref=e8]:
+      - generic [ref=e9] [cursor=pointer]:
+        - generic [ref=e10]: Ticker Grid
+        - generic "Close" [ref=e11]:
+          - img [ref=e12]
+      - generic [ref=e17] [cursor=pointer]: News Feed
+    - generic [ref=e18]:
+      - button "Show selected tab in floating window" [ref=e19] [cursor=pointer]:
+        - img [ref=e20]
+      - button "Maximize tabset" [ref=e23] [cursor=pointer]:
+        - img [ref=e24]
+  - generic [ref=e29]:
+    - generic [ref=e33] [cursor=pointer]: Command Center
+    - generic [ref=e34]:
+      - button "Show selected tab in floating window" [ref=e35] [cursor=pointer]:
+        - img [ref=e36]
+      - button "Maximize tabset" [ref=e39] [cursor=pointer]:
+        - img [ref=e40]
+  - generic [ref=e45]:
+    - generic [ref=e47]:
+      - generic [ref=e48] [cursor=pointer]:
+        - generic [ref=e49]: Analysis Chart
+        - generic "Close" [ref=e50]:
+          - img [ref=e51]
+      - generic [ref=e56] [cursor=pointer]: AI Research
+    - generic [ref=e57]:
+      - button "1" [ref=e58] [cursor=pointer]:
+        - img [ref=e59]
+        - generic [ref=e62]: "1"
+      - button "Show selected tab in floating window" [ref=e63] [cursor=pointer]:
+        - img [ref=e64]
+      - button "Maximize tabset" [ref=e67] [cursor=pointer]:
+        - img [ref=e68]
+  - generic [ref=e74]:
+    - treegrid [ref=e75]:
+      - rowgroup [ref=e76]:
+        - row "Symbol Price Timestamp" [ref=e77]:
+          - columnheader "Symbol" [ref=e78]:
+            - text: 
+            - generic [ref=e79]: Symbol
+            - text: 
+            - generic: 
+          - columnheader "Price" [ref=e80]:
+            - text: 
+            - generic [ref=e81]: Price
+            - text: 
+            - generic: 
+          - columnheader "Timestamp" [ref=e82]:
+            - text: 
+            - generic [ref=e83]: Timestamp
+            - text: 
+            - generic: 
+      - generic:
+        - generic:
+          - generic:
+            - generic: No Rows To Show
+    - text:    
+  - generic [ref=e86]:
+    - generic [ref=e87]:
+      - generic [ref=e88]:
+        - heading "MANUAL ORDER ENTRY" [level=3] [ref=e89]
+        - generic [ref=e90]:
+          - generic [ref=e91]:
+            - generic [ref=e92]: SYMBOL
+            - textbox [ref=e93]: SPY
+          - generic [ref=e94]:
+            - generic [ref=e95]: QTY
+            - spinbutton [ref=e96]: "10"
+        - generic [ref=e97]:
+          - generic [ref=e98]:
+            - generic [ref=e99]: PRICE
+            - spinbutton [ref=e100]: "450"
+          - generic [ref=e102]:
+            - button "BUY" [ref=e103] [cursor=pointer]
+            - button "SELL" [ref=e104] [cursor=pointer]
+        - button "SUBMIT ORDER" [ref=e105] [cursor=pointer]
+      - generic [ref=e106]:
+        - heading "ACTIVE STRATEGIES" [level=3] [ref=e107]
+        - generic [ref=e108]:
+          - generic [ref=e109]:
+            - generic [ref=e110]: GAMMA_SCALPER_SPY
+            - generic [ref=e111]: RUNNING
+          - generic [ref=e112]:
+            - generic [ref=e113]: VOL_TARGET_QQQ
+            - generic [ref=e114]: PAUSED
+    - generic [ref=e116]:
+      - heading "SYSTEM HEALTH" [level=3] [ref=e117]
+      - generic [ref=e118]:
+        - generic [ref=e119]: "BUNKER: ONLINE"
+        - generic [ref=e120]: "IBKR: CONNECTED"
+        - generic [ref=e121]: "THETA: STREAMING"
+        - generic [ref=e122]: "AI: READY"
+  - table [ref=e126]:
+    - row [ref=e127]:
+      - cell
+      - cell [ref=e128]:
+        - link "Charting by TradingView" [ref=e132] [cursor=pointer]:
+          - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/
+          - img [ref=e133]
+      - cell [ref=e137]
+    - row [ref=e141]:
+      - cell
+      - cell [ref=e142]
+      - cell [ref=e146]
+```

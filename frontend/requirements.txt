@@ -1,0 +1,41 @@
+# --- Core Web & Async ---
+fastapi[all]
+asyncpg
+SQLAlchemy
+pydantic>=2.0
+pydantic-settings
+redis
+celery
+httpx
+websockets
+orjson
+nest_asyncio
+
+# --- Brokerage & Data ---
+ib_async
+google-cloud-storage
+pyarrow
+psycopg2-binary
+
+# --- Quantitative & Math ---
+Cython
+scipy
+pandas
+py_vollib
+scikit-learn
+
+# --- Intelligence & NLP ---
+google-generativeai
+tiktoken
+vaderSentiment
+transformers
+presidio-analyzer
+spacy
+python-Levenshtein
+thefuzz
+PRAW
+
+# --- Security & Auth ---
+cryptography
+webauthn
+passlib

@@ -1,0 +1,34 @@
+# --- REPOMIX OUTPUTS ---
+repomix-output.xml
+repomix-output.txt
+repomix-output.json
+**/*repomix-output*
+
+# --- DEPENDENCIES & SYSTEM ---
+venv/
+node_modules/
+__pycache__/
+*.pyc
+.git/
+.vscode/
+.idea/
+.DS_Store
+.env
+
+# --- HEAVY ASSETS ---
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.db
+*.sqlite
+
+# --- LOGS & DATA ---
+logs/
+*.log
+data/
+
+# --- KNOWLEDGE BASE (EXCLUDED) ---
+# The AI reads these at runtime; no need to pack them.
+avatrada-brain/knowledge/

@@ -1,0 +1,90 @@
+name: Avatrada CI Pipeline
+
+on:
+  push:
+    branches: [ "main", "development" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  backend-ci:
+    name: Backend CI (Lint, Test, Build)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+<<<<<<< HEAD
+      # In a real pipeline, you would log into your container registry here
+      # - name: Log in to Google Container Registry
+      #   uses: docker/login-action@v3
+      #   with:
+      #     registry: gcr.io
+      #     username: _json_key
+      #     password: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Build and Push Backend Image
+=======
+      - name: Build Backend Image
+>>>>>>> 2a79fa8ba914b7dbf58bbe4e9d1bff6ac5554c49
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64
+<<<<<<< HEAD
+          push: false # Set to true when you have a registry configured
+          tags: avatrada-app:latest
+          # cache-from: type=registry,ref=your-repo/avatrada-app:buildcache
+          # cache-to: type=inline
+
+  frontend-ci:
+    name: Frontend CI (Lint, Test)
+=======
+          push: false
+          tags: avatrada-app:ci-build
+
+  frontend-ci:
+    name: Frontend CI (Lint & Test)
+>>>>>>> 2a79fa8ba914b7dbf58bbe4e9d1bff6ac5554c49
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./frontend
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Linting
+        run: npm run lint
+
+<<<<<<< HEAD
+      # Note: E2E tests require a running backend. 
+      # In a full CI setup, you would use 'services' to run the Docker stack.
+      # For now, we will skip running the test in CI as it requires a live backend.
+      - name: Run E2E Tests (Placeholder)
+        run: echo "Skipping E2E tests in CI until backend service is available."
+        # In a real setup: npm test 
+=======
+      - name: Run E2E Tests (Placeholder)
+        run: echo "Skipping E2E tests in CI until backend service is available."
+>>>>>>> 2a79fa8ba914b7dbf58bbe4e9d1bff6ac5554c49

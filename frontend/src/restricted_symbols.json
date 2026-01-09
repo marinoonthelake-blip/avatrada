@@ -1,0 +1,10 @@
+{
+  "version": "1.0.0",
+  "description": "Restricted symbols to prevent Section 267 conflicts.",
+  "restricted_symbols": [
+    "AAPL",
+    "MSFT",
+    "GOOGL",
+    "AMZN"
+  ]
+}

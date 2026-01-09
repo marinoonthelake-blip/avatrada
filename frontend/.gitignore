@@ -1,0 +1,33 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Project specific
+*.pem
+*.key
+credentials.json
+returns_cache.csv
+*.log
+
+# Build and Dist
+node_modules/
+build/
+dist/
+*.egg-info/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+
+# IDEs
+.vscode/
+.idea/
