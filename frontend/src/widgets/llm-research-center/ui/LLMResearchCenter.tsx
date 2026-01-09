@@ -1,2 +1,2 @@
-import { PlaceholderWidget } from '@/shared/ui/PlaceholderWidget';
-export const LLMResearchCenter = () => <PlaceholderWidget name="LLM Research Center" />;
+import { ResearchFeed } from './ResearchFeed';
+export const LLMResearchCenter = () => <ResearchFeed />;
